@@ -64,3 +64,9 @@ We just need a *sparse* in-mermory index table to tell us the location of some k
 ## Limitations
 
 When there is a database crash, we will lose the in-memory SSTable.
+
+
+# B-Tree
+B-Tree by far is the most widely used indexing structure. Unless the previous structures that break the database down into variable-size segments of several megabytes, B-tree break the database down into fixed-size *blocks* or *pages* of 4 KB, and read or write one page at a time.
+
+
