@@ -27,3 +27,12 @@ Many programming languages come with built-in libraries to encode in-memory obje
 - Lack of support across different languages. Data encoded by one language is often difficult to read in another language.
 
 - Difficult to restore the object even with the same programming language if the object class changed.
+
+
+# Human-readable Textual Encoding
+
+Textual formats like JSON, XML and CSV also have some problems
+
+- Ambiguity for numbers
+- Lack of binary string support
+- For csv, difficult to have value that contains comma or newline character, not all parsers implement them correctly.
