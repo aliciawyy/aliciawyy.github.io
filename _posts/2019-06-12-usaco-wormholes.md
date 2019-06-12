@@ -25,7 +25,7 @@ This is similar to [enumerate all permutations](https://www.geeksforgeeks.org/wr
 The latter is easy to solve with recursion. We just need to jump 2
  positions each time instead of 1.
  
-I have added in this step some pruning, like if two holes are immediate neighbors on a horizontal line, we do not need to continue.
+I have added in this step some pruning, like if two holes are immediate neighbors on a horizontal line, we do not need to continue. Here we count the non cycle cases because I think it is faster than to count cycle with pruning.
 
 In the worst case, we will have to enumerate all $(n - 1) * (n - 3) * ... * 1$ pairs sets.
 
@@ -37,5 +37,14 @@ It takes $O(N^2)$ as time complexity to check cycle given a pair set. The overal
 
 # Code
 
-The code to implement the idea is as following
+## First version
+
+The code to implement the idea is as following, this is the first version I worked out. 
+
 {% gist 359f3ea08c26f7906b8528af57f8a2a2 %}
+
+## Second version
+
+After reading the solution, I think the idea is almost the same, but I have used several redundant variables which make the code look complicated. So I refactored the previous version, and the new code is as following.
+
+{% gist 1b78fdd01c6fe4458bafcd2a01113a12 %}
