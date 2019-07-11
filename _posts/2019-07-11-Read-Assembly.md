@@ -32,7 +32,7 @@ Three types of values accesses in assembly
 - *register* denotes the content of of one of the register, e.g. `%eax` takes the 32 bits data in the register denoted by `%eax`
 - *Memory reference* designates a value stored in memory, it is like pointer in C, e.g. `(%eax)` is to take the value at the address saved in `%eax`, this is called as argument in a command, it always comes with size of bytes to read.
 
-The third case may can be more complicated than the other two in practice, since it can involve memory access both to registers and to memory. For example, for `movl (%eax),%edx`, we first locate the byte at the address `%eax` in memory, then copy 4 bytes from address `%eax` to `%eax+3` to the register `%edx`. We can also do `movl (%eax),(%edx)` to copy the same 4 bytes located at `%eax` to `%eax+3` in memory to `%edx` to `%edx+3` in memory.
+The third case may can be more complicated than the other two in practice, since it can involve memory access both to registers and to memory. For example, for `movl (%eax),%edx`, we first locate the byte at the address `%eax` in memory, then copy 4 bytes from address `%eax` to `%eax+3` to the register `%edx`. By the way, we cannot have both source and destination be memory reference.
 
 **Note:** It worth noticing that when we add values of one register to another like `addl %eax,%edx`, it is one single operation. In contrast, `addl %eax,(%edx)` yields multiple operations: we first load the value at the address `%edx` from memory to CPU register, then add the value `%eau`, finally store back the result into memory. The former instruction has much higher performance.
 {: .notice--warning}
