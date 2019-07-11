@@ -34,6 +34,9 @@ Three types of values accesses in assembly
 
 The third case may can be more complicated than the other two in practice, since it can involve memory access both to registers and to memory. For example, for `movl (%eax),%edx`, we first locate the byte at the address `%eax` in memory, then copy 4 bytes from address `%eax` to `%eax+3` to the register `%edx`. We can also do `movl (%eax),(%edx)` to copy the same 4 bytes located at `%eax` to `%eax+3` in memory to `%edx` to `%edx+3` in memory.
 
+**Note:** It worth noticing that when we add values of one register to another like `addl %eax,%edx`, it is one single operation. In contrast, `addl %eax,(%edx)` yields multiple operations: we first load the value at the address `%edx` from memory to CPU register, then add the value `%eau`, finally store back the result into memory. The former instruction has much higher performance.
+{: .notice--warning}
+
 Another commun format to access memory is to use *offset* and *scaling factor*. Like `movl 4(%esp),%eax` is to copy the 4 bytes value starting from the address `%esp+4` in memory to the register `%eax`.
 
 **Note:** **Pointer** Dereferencing a pointer in C involves copying that pointer into a register, and then use this register to take the value in memory. As the access to register is much faster than to memory, this understanding can help us to further optimize our code with compound types.
